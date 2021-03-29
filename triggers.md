@@ -2,7 +2,7 @@
 
 ## Triggers - 44
 
-Usa NEW pra indicar o processo ocorrerá no novo registro  
+Usa NEW pra indicar que o processo ocorrerá no novo registro  
 Existe também o OLD, pra indicar o registro antigo, normalmente utilizado para fins de comparação na operação de UPDATE  
 
 timing = AFTER, BEFORE  
