@@ -3,7 +3,7 @@
 ## Rotinas Armazenadas - Funções (CREATE FUNCTION) - 33
 
 ### Sintaxe:  
-```
+```sql
 CREATE FUNCTION nome_função(parametros)  
 RETURNS tipo_dados   
 código_da_funcao;  
@@ -13,13 +13,13 @@ RETURNS INT
 RETURN a*b;  
 ```  
 ### Invocando função:  
-```
+```sql
 SELECT nome_função(parametros);  
 
 SELECT fn_teste(2.5, 4) AS Resultado;  
 ```
 ### Deletando função:  
-```
+```sql
 DROP FUNCTION nome_função;  
 
 DROP FUNCTION fn_teste;  
@@ -28,7 +28,7 @@ DROP FUNCTION fn_teste;
 ## Procedimentos Armazenados - Básico (STORED PROCEDURES) - 34
 
 ### Sintaxe:  
-```
+```sql
 CREATE PROCEDURE nome_procedimento (parametros) declarações;  
 
 CREATE PROCEDURE verPreço (varLivro smallint)  
@@ -37,13 +37,13 @@ FROM tbl_Livro
 WHERE ID_Livro = varLivro;  
 ```  
 ### Invocando procedimento:  
-```
+```sql
 CALL nome_procedimento(parametros);  
 
 CALL verPreço(3);  
 ```
 ### Deletando procedimento:  
-```
+```sql
 DROP PROCEDURE nome_procedimento;  
 
 DROP PROCEDURE verPreço;  
@@ -54,7 +54,7 @@ DROP PROCEDURE verPreço;
 Utiliza um DELIMITER pra ele não executar uma query na criação da função/procedimento ao ver o delimitador padrão ;  
 
 ### Sintaxe Função e Procedimento:  
-```
+```sql
 DELIMITER $$  
 CREATE FUNCTION aumenta_preco(preco DECIMAL(10, 2), taxa DECIMAL(10, 2))  
 BEGIN  
@@ -74,13 +74,13 @@ END//
 DELIMITER ;  
 ```  
 ### Invocando Função e Procedimento:  
-```
+```sql
 SELECT aumenta_preco(50.00, 10.00) AS Resultado;  
 
 CALL verPreço(3);  
 ```
 ### Deletando Função e Procedimento:  
-```
+```sql
 DROP PROCEDURE nome_procedimento;  
 
 DROP PROCEDURE verPreço;  
@@ -95,7 +95,7 @@ INOUT serve pra ambos
 Obs: se não especifica nada é IN por default  
 
 ### Sintaxe:  
-```
+```sql
 MODO nome_param tipo_param(tamanho_param)  
 
 -- Exemplo IN:  
@@ -120,7 +120,7 @@ END//
 DELIMITER ;  
 ```  
 ### Invocando:  
-```
+```sql
 SET @livro = 4;  
 SET @aumento = 20;  
 CALL aumenta_preco(@livro, @aumento);  
@@ -132,7 +132,7 @@ SELECT @livro;
 ## Variáveis locais e escopo - 37
 
 ### Sintaxe:  
-```
+```sql
 DECLARE nome_var1 tipo, nome_var2 tipo [DEFAULT valor_padrão]  
 
 DELIMITER //  
@@ -148,14 +148,14 @@ DELIMITER ;
 
 ```  
 ### Invocando:  
-```
+```sql
 SELECT calcula_desconto(4, 10.00);  
 ```  
 
 ## Blocos Condicionais IF - THEN - ELSE e CASE - 38
 
 ### Sintaxe:  
-```
+```sql
 IF condição THEN lista_declarações  
 	[ELSEIF condição THEN lista_declarações]  
 	...  
@@ -172,14 +172,14 @@ ELSE lista_declarações
 END CASE;  
 ```  
 ### Invocando:  
-```
+```sql
 SELECT função(4, 10.00);  
 ```  
 
 ## Estruturas de Repetição - LOOP - 40
 
 ### Sintaxe:  
-```
+```sql
 [<rótulo>:] LOOP  
 	declarações  
 END LOOP [<rótulo>];  
@@ -204,7 +204,7 @@ END//
 DELIMITER ;  
 ```  
 ### Invocando:  
-```
+```sql
 CALL acumula(10);  
 ```  
 
@@ -213,7 +213,7 @@ CALL acumula(10);
 Diferença pro LOOP é que ele faz uma verificação utilizando o UNTIL pra continuar se UNTIL for verdadeiro ele encerra.  
 
 ### Sintaxe:  
-```
+```sql
 [<rótulo>:] REPEAT  
 	declarações  
 UNTIL condição  
@@ -238,14 +238,14 @@ END//
 DELIMITER ;  
 ```  
 ### Invocando:  
-```
+```sql
 CALL acumula_repita(10);  
 ```  
 
 ## Estruturas de Repetição - WHILE - 42
 
 ### Sintaxe:  
-```
+```sql
 [<rótulo>:] WHILE condição DO  
 	declarações  
 END WHILE [<rótulo>];  
@@ -264,7 +264,7 @@ END//
 DELIMITER ;  
 ```  
 ### Invocando:  
-```
+```sql
 CALL acumula_while(10);  
 ```  
 
@@ -273,6 +273,9 @@ CALL acumula_while(10);
 Declaração que vai dentro dos loops pra retornar ao início do loop novamente  
 
 ### Sintaxe:  
-```
+```sql
 ITERATE nome_rótulo_while_repeat_loop;  
 ```  
+
+## Referências do 33 ao 43:  
+- https://www.youtube.com/playlist?list=PLucm8g_ezqNrWAQH2B_0AnrFY5dJcgOLR (Vídeos do 33 ao 43)  
